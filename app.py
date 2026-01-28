@@ -1,3 +1,4 @@
+import os
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
@@ -341,4 +342,5 @@ def get_user_stats():
 
 if __name__ == '__main__':
     print("🚀 Starting Whale Monitor API...")
-    app.run(host=config.API_HOST, port=config.API_PORT, debug=True)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port, debug=False)
